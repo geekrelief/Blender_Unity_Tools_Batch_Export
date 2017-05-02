@@ -1,11 +1,17 @@
-Blender Unity Tools Batch Exporter
+# Blender Unity Tools Batch Exporter
 
+Blender's normal FBX export results in a mesh with the incorrect orientation when loaded into Unity.
+This addon fixes the rotation issue with exported FBX files without you having to 
+manually rotate the objects in either Blender or Unity.
+
+## Installing
 Download the repo as a .zip file.
 
 Install the addon as a .zip file using Blender's "Install From File" option.
 
-In the ToolShelf, the Unity Tools panel will appear.
+A Unity Tools panel will appear in the ToolShelf.
 
+## Function
 Select objects in your scene and click on Batch Export to export each object separately.
 The exported object's name will be the same as in the Outline.
 
@@ -18,7 +24,7 @@ apply the location to the mesh (Apply), or move the object to the origin (Zero).
 
 Export Scale let's you adjust the scale of all the meshes.
 
-Shortcuts
+## Shortcuts
 To Single Export press Ctrl + E, Batch Export is Ctrl + Shift + E
 You can modify the shortcuts in the Input Panel listed under 
 3D View -> 3D View (Global) -> "Single FBX Export For Unity"
