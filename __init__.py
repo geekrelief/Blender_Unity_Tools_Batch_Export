@@ -54,7 +54,7 @@ class UnityBatchExportPanel(bpy.types.Panel):
 
 class LoqBatchExport(bpy.types.Operator):
     bl_idname = "loq.batch_export"
-    bl_label = "Batch Export"
+    bl_label = "Batch FBX Export For Unity"
 
     def execute(self, context):
         print ("execute Loq_batch_export")
@@ -100,7 +100,7 @@ class LoqBatchExport(bpy.types.Operator):
 
 class LoqSingleExport(bpy.types.Operator):
     bl_idname = "loq.single_export"
-    bl_label = "Single Export"
+    bl_label = "Single FBX Export For Unity"
 
     def execute(self, context):
         print ("execute Loq_single_export")
@@ -157,8 +157,18 @@ def apply_fix_rotation(obj):
         obj.select = True
         apply_fix_rotation(child)
 
+# store keymaps here to access after registration
+addon_keymaps = []
+
 # registers
 def register():
+    #handle the keymap
+    wm = bpy.context.window_manager
+    km = wm.keyconfigs.addon.keymaps.new(name="3D View", space_type="VIEW_3D")
+    kmiBatch = km.keymap_items.new(LoqBatchExport.bl_idname, 'E', 'PRESS', ctrl=True, shift=True)
+    kmiSingle = km.keymap_items.new(LoqSingleExport.bl_idname, 'E', 'PRESS', ctrl=True, shift=False)
+    addon_keymaps.append(km)
+
     bpy.types.Scene.loq_batch_export_path = bpy.props.StringProperty (
         name="Path",
         default="",
@@ -188,6 +198,12 @@ def register():
     bpy.utils.register_class(LoqSingleExport)
 
 def unregister():
+    # handle the keymap
+    wm = bpy.context.window_manager
+    for km in addon_keymaps:
+        wm.keyconfigs.addon.keymaps.remove(km)
+    addon_keymaps.clear()
+
     del bpy.types.Scene.loq_batch_export_path
     del bpy.types.Scene.loq_export_name
     del bpy.types.Scene.loq_location_export

@@ -1,5 +1,7 @@
 Blender Unity Tools Batch Exporter
 
+Download the repo as a .zip file.
+
 Install the addon as a .zip file using Blender's "Install From File" option.
 
 In the ToolShelf, the Unity Tools panel will appear.
@@ -15,3 +17,9 @@ The Location Export radio option can be set to pass through the location to the 
 apply the location to the mesh (Apply), or move the object to the origin (Zero).
 
 Export Scale let's you adjust the scale of all the meshes.
+
+Shortcuts
+To Single Export press Ctrl + E, Batch Export is Ctrl + Shift + E
+You can modify the shortcuts in the Input Panel listed under 
+3D View -> 3D View (Global) -> "Single FBX Export For Unity"
+and "Batch FBX Export for Unity"
